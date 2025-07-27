@@ -2,16 +2,16 @@
 
 void Driver_FSMC_GPIO_Init(void)
 {
-    /* 1 ÅäÖÃ A10 PG0 µØÖ·¶Ë¿ÚµÄÊä³öÄ£Ê½ ¸´ÓÃÍÆÍìÊä³öCNF:10 50MHzËÙ¶È MODE:11*/
+    /* 1 é…ç½® A10 PG0 åœ°å€ç«¯å£çš„è¾“å‡ºæ¨¡å¼ å¤ç”¨æŽ¨æŒ½è¾“å‡ºCNF:10 50MHzé€Ÿåº¦ MODE:11*/
     /* =============MODE=============== */
     GPIOG->CRL |= (GPIO_CRL_MODE0 | GPIO_CRL_CNF0_1);
     GPIOG->CRL &= ~GPIO_CRL_CNF0_0;
 
     /*
-        2 Êý¾Ý¶Ë¿Ú ¸´ÓÃÍÆÍìÊä³ö
-            ÔÚÊµ¼ÊÓ¦ÓÃÖÐ£¬¼´Ê¹Êý¾ÝÏß±»ÅäÖÃÎªÊä³öÄ£Ê½£¬FSMC¿ØÖÆÆ÷ÈÔÈ»ÄÜ¹»¹ÜÀíÊý¾ÝÏßµÄ·½Ïò£¬Ê¹ÆäÔÚÐèÒªÊ±³ÉÎªÊäÈëÏß¡£
-            ÕâÖÖ×Ô¶¯ÇÐ»»ÊÇÓÉFSMC¿ØÖÆÆ÷Ó²¼þ¹ÜÀíµÄ£¬²»ÐèÒªÈí¼þ¸ÉÔ¤¡£
-            Òò´Ë£¬¼´Ê¹GPIOÅäÖÃÎª¸´ÓÃÍÆÍìÊä³ö£¬FSMCÒÀÈ»¿ÉÒÔÊµÏÖ¶ÁÈ¡²Ù×÷¡£
+        2 æ•°æ®ç«¯å£ å¤ç”¨æŽ¨æŒ½è¾“å‡º
+            åœ¨å®žé™…åº”ç”¨ä¸­ï¼Œå³ä½¿æ•°æ®çº¿è¢«é…ç½®ä¸ºè¾“å‡ºæ¨¡å¼ï¼ŒFSMCæŽ§åˆ¶å™¨ä»ç„¶èƒ½å¤Ÿç®¡ç†æ•°æ®çº¿çš„æ–¹å‘ï¼Œä½¿å…¶åœ¨éœ€è¦æ—¶æˆä¸ºè¾“å…¥çº¿ã€‚
+            è¿™ç§è‡ªåŠ¨åˆ‡æ¢æ˜¯ç”±FSMCæŽ§åˆ¶å™¨ç¡¬ä»¶ç®¡ç†çš„ï¼Œä¸éœ€è¦è½¯ä»¶å¹²é¢„ã€‚
+            å› æ­¤ï¼Œå³ä½¿GPIOé…ç½®ä¸ºå¤ç”¨æŽ¨æŒ½è¾“å‡ºï¼ŒFSMCä¾ç„¶å¯ä»¥å®žçŽ°è¯»å–æ“ä½œã€‚
     */
     /* =============MODE=============== */
     GPIOD->CRL |= (GPIO_CRL_MODE0 | GPIO_CRL_MODE1);
@@ -39,7 +39,7 @@ void Driver_FSMC_GPIO_Init(void)
     GPIOE->CRH &= ~(GPIO_CRH_CNF8_0 | GPIO_CRH_CNF9_0 | GPIO_CRH_CNF10_0 | GPIO_CRH_CNF11_0 |
                     GPIO_CRH_CNF12_0 | GPIO_CRH_CNF13_0 | GPIO_CRH_CNF14_0 | GPIO_CRH_CNF15_0);
 
-    /* 3 ÆäËû¿ØÖÆ¶Ë¿Ú  ¸´ÓÃÍÆÍìÊä³ö  pd4 pd5*/
+    /* 3 å…¶ä»–æŽ§åˆ¶ç«¯å£  å¤ç”¨æŽ¨æŒ½è¾“å‡º  pd4 pd5*/
     GPIOD->CRL |= (GPIO_CRL_MODE4 | GPIO_CRL_MODE5);
     GPIOD->CRL |= (GPIO_CRL_CNF4_1 | GPIO_CRL_CNF5_1);
     GPIOD->CRL &= ~(GPIO_CRL_CNF4_0 | GPIO_CRL_CNF5_0);
@@ -48,47 +48,47 @@ void Driver_FSMC_GPIO_Init(void)
     GPIOG->CRH |= (GPIO_CRH_MODE12 | GPIO_CRH_CNF12_1);
     GPIOG->CRH &= ~GPIO_CRH_CNF12_0;
 
-    // LCD-RST =>PG15 ÖØÆôÒý½Å Í¨ÓÃÍÆÍìMODE=11 CNF=00
+    // LCD-RST =>PG15 é‡å¯å¼•è„š é€šç”¨æŽ¨æŒ½MODE=11 CNF=00
     GPIOG->CRH |= GPIO_CRH_MODE15;
     GPIOG->CRH &= ~GPIO_CRH_CNF15;
 
-    // LCD-BG PB0 Í¨ÓÃÍÆÍì
+    // LCD-BG PB0 é€šç”¨æŽ¨æŒ½
     GPIOB->CRL |= GPIO_CRL_MODE0;
     GPIOB->CRL &= ~GPIO_CRL_CNF0;
 }
 
 void Driver_FSMC_Init(void)
 {
-    /* 1. Ê±ÖÓµÄ³õÊ¼»¯ */
+    /* 1. æ—¶é’Ÿçš„åˆå§‹åŒ– */
     RCC->AHBENR |= RCC_AHBENR_FSMCEN;
 
     RCC->APB2ENR |= (RCC_APB2ENR_IOPBEN | RCC_APB2ENR_IOPDEN | RCC_APB2ENR_IOPEEN |
                      RCC_APB2ENR_IOPFEN | RCC_APB2ENR_IOPGEN | RCC_APB2ENR_AFIOEN);
 
-    /* 2. ¸÷¸öÒý½ÅµÄÄ£Ê½µÄ³õÊ¼»¯ */
+    /* 2. å„ä¸ªå¼•è„šçš„æ¨¡å¼çš„åˆå§‹åŒ– */
     Driver_FSMC_GPIO_Init();
 
-    /* 3. ÅäÖÃFSMC  BCR3 Æ¬Ñ¡¿ØÖÆ¼Ä´æÆ÷*/
-    /* 3.1 bank1µÄ¿é4Ê¹ÄÜ */
+    /* 3. é…ç½®FSMC  BCR3 ç‰‡é€‰æŽ§åˆ¶å¯„å­˜å™¨*/
+    /* 3.1 bank1çš„å—4ä½¿èƒ½ */
     FSMC_Bank1->BTCR[6] |= FSMC_BCR4_MBKEN;
-    /* 3.2 ÅäÖÃ´æ´¢µÄÀàÐÍ Çý¶¯lcdµÄÊ±ºòÈÔÈ»Ñ¡Ôñsram*/
+    /* 3.2 é…ç½®å­˜å‚¨çš„ç±»åž‹ é©±åŠ¨lcdçš„æ—¶å€™ä»ç„¶é€‰æ‹©sram*/
     FSMC_Bank1->BTCR[6] &= ~FSMC_BCR4_MTYP;
-    /* 3.3 ´æ´¢Æ÷Êý¾Ý¿í¶È  01=16Î» */
+    /* 3.3 å­˜å‚¨å™¨æ•°æ®å®½åº¦  01=16ä½ */
     FSMC_Bank1->BTCR[6] &= ~FSMC_BCR4_MWID_1;
     FSMC_Bank1->BTCR[6] |= FSMC_BCR4_MWID_0;
-    /* 3.4 Êý¾Ý×ÜÏßºÍµØÖ·×ÜÏß²»¸´ÓÃ 00 */
+    /* 3.4 æ•°æ®æ€»çº¿å’Œåœ°å€æ€»çº¿ä¸å¤ç”¨ 00 */
     FSMC_Bank1->BTCR[6] &= ~FSMC_BCR4_MUXEN;
-    /* 3.5 ½ûÖ¹·ÃÎÊNor Flash */
+    /* 3.5 ç¦æ­¢è®¿é—®Nor Flash */
     FSMC_Bank1->BTCR[6] &= ~FSMC_BCR4_FACCEN;
-    /* 3.6 Ð´Ê¹ÄÜ */
+    /* 3.6 å†™ä½¿èƒ½ */
     FSMC_Bank1->BTCR[6] |= FSMC_BCR4_WREN;
 
-    /* 4. BTR3 Ê±Ðò¼Ä´æÆ÷ */
-    /* 4.1 µØÖ·½¨Á¢Ê±¼ä, ¶ÔÍ¬²½²Ù×÷, ÓÀÔ¶ÊÇÒ»¸öÖÜÆÚ */
+    /* 4. BTR3 æ—¶åºå¯„å­˜å™¨ */
+    /* 4.1 åœ°å€å»ºç«‹æ—¶é—´, å¯¹åŒæ­¥æ“ä½œ, æ°¸è¿œæ˜¯ä¸€ä¸ªå‘¨æœŸ */
     // FSMC_Bank1->BTCR[5] &= ~FSMC_BTR3_ADDSET;
-    /* 4.2 µØÖ·±£³ÖÊ±¼ä, ¶ÔÍ¬²½²Ù×÷, ÓÀÔ¶ÊÇÒ»¸öÖÜÆÚ */
+    /* 4.2 åœ°å€ä¿æŒæ—¶é—´, å¯¹åŒæ­¥æ“ä½œ, æ°¸è¿œæ˜¯ä¸€ä¸ªå‘¨æœŸ */
     // FSMC_Bank1->BTCR[5] &= ~FSMC_BTR3_ADDHLD;
-    /* 4.3 Êý¾ÝµÄ±£³ÖÊý¾Ý Ð¾Æ¬ÒªÇó²»ÄÜµÍÓÚ55ns ÎÒÃÇÉèÖÃ1us 72¸öÊ±ÖÓÖÜÆÚ */
+    /* 4.3 æ•°æ®çš„ä¿æŒæ•°æ® èŠ¯ç‰‡è¦æ±‚ä¸èƒ½ä½ŽäºŽ55ns æˆ‘ä»¬è®¾ç½®1us 72ä¸ªæ—¶é’Ÿå‘¨æœŸ */
     FSMC_Bank1->BTCR[7] &= ~FSMC_BTR4_DATAST;
     FSMC_Bank1->BTCR[7] |= 71 << 8;
 }

@@ -4,7 +4,7 @@ extern void lv_tick_inc(uint32_t tick_period);
 
 void Driver_TIM6_Init(void)
 {
-    /* 1. ¸ø¶¨Ê±Æ÷6¿ªÆôÊ±ÖÓ */
+    /* 1. ç»™å®šæ—¶å™¨6å¼€å¯æ—¶é’Ÿ */
     RCC->APB1ENR |= RCC_APB1ENR_TIM6EN;
 
     TIM6->PSC = 72 - 1;
@@ -14,10 +14,10 @@ void Driver_TIM6_Init(void)
     TIM6->EGR |= TIM_EGR_UG;
     TIM6->SR &= ~TIM_SR_UIF;
 
-    /* 4. Ê¹ÄÜ¸üÐÂÖÐ¶Ï (Òç³öµÄÊ±ºò²úÉúÖÐ¶Ï)*/
+    /* 4. ä½¿èƒ½æ›´æ–°ä¸­æ–­ (æº¢å‡ºçš„æ—¶å€™äº§ç”Ÿä¸­æ–­)*/
     TIM6->DIER |= TIM_DIER_UIE;
 
-    /* 5. ÅäÖÃNVIC  3 4 5 6 7*/
+    /* 5. é…ç½®NVIC  3 4 5 6 7*/
     NVIC_SetPriorityGrouping(3);
     NVIC_SetPriority(TIM6_IRQn, 3);
     NVIC_EnableIRQ(TIM6_IRQn);
@@ -25,13 +25,13 @@ void Driver_TIM6_Init(void)
 
 void Driver_TIM6_Start(void)
 {
-    /* ¼ÆÊýÆ÷Ê¹ÄÜ */
+    /* è®¡æ•°å™¨ä½¿èƒ½ */
     TIM6->CR1 |= TIM_CR1_CEN;
 }
 
 void Driver_TIM6_Stop(void)
 {
-    /* ¼ÆÊýÆ÷Ê§ÄÜ */
+    /* è®¡æ•°å™¨å¤±èƒ½ */
     TIM6->CR1 &= ~TIM_CR1_CEN;
 }
 
@@ -39,7 +39,7 @@ extern void lv_tick_inc(uint32_t tick_period);
 
 void TIM6_IRQHandler(void)
 {
-    /* 1. ÏÈÇå³ýÖÐ¶Ï±êÖ¾Î» */
+    /* 1. å…ˆæ¸…é™¤ä¸­æ–­æ ‡å¿—ä½ */
     TIM6->SR &= ~TIM_SR_UIF;
 
     lv_tick_inc(1);

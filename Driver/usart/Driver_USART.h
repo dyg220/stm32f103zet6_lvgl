@@ -5,9 +5,9 @@
 #include "stdio.h"
 
 
-/* »º³å½ÓÊÕµ½µÄÊı¾İ */
+/* ç¼“å†²æ¥æ”¶åˆ°çš„æ•°æ® */
 extern uint8_t buff[100];
-/* ´æ´¢½ÓÊÕµ½µÄ×Ö½ÚµÄ³¤¶È */
+/* å­˜å‚¨æ¥æ”¶åˆ°çš„å­—èŠ‚çš„é•¿åº¦ */
 extern uint8_t len;
 extern uint8_t isReceivedComplete;
 

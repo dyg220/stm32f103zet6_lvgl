@@ -1,7 +1,7 @@
 #include "Common_Debug.h"
 
 /**
- * @description: Æô¶¯debugÄ£¿é
+ * @description: ï¿½ï¿½ï¿½ï¿½debugÄ£ï¿½ï¿½
  * @return {*}
  */
 void Common_Debug_Start(void)

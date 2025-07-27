@@ -1,7 +1,7 @@
 # STM32_CMAKE_Demo
-#¿ª·¢»·¾³
+#å¼€å‘ç¯å¢ƒ
 KEIL 
-add_c_to_project.bat ×Ô¶¯Ìí¼ÓlvglÔ´ÎÄ¼ş£¬È¥µôlvgl_Register.uvprojxµÚÒ»¸ö¿Õ¸ñ
+add_c_to_project.bat è‡ªåŠ¨æ·»åŠ lvglæºæ–‡ä»¶ï¼Œå»æ‰lvgl_Register.uvprojxç¬¬ä¸€ä¸ªç©ºæ ¼
 
-#Ó²¼ş£º
+#ç¡¬ä»¶ï¼š
 STM32103ZET6

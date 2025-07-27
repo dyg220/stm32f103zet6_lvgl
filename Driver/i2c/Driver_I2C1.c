@@ -5,7 +5,7 @@
 
 
 /**
- * @description: ³õÊ¼»¯
+ * @description: åˆå§‹åŒ–
  * @return {*}
  */
 void Driver_I2C1_Init(void)
@@ -13,8 +13,8 @@ void Driver_I2C1_Init(void)
     /*
         PB10->SCL
         PB11->SDA
-            ¿ªÂ©Êä³ö: ¼È¿ÉÒÔÓÃÓÚÊä³öÒ²¿ÉÒÔÊäÈë. Íâ½çÒªÓÐÉÏÀ­µç×è.
-                    ÓÃÓÚÊäÈëµÄÊ±ºò,×îºÃÏÈÊä³öÒ»¸ö1,°ÑÏßµÄ¿ØÖÆÈ¨½»¸øÍâ½ç.
+            å¼€æ¼è¾“å‡º: æ—¢å¯ä»¥ç”¨äºŽè¾“å‡ºä¹Ÿå¯ä»¥è¾“å…¥. å¤–ç•Œè¦æœ‰ä¸Šæ‹‰ç”µé˜».
+                    ç”¨äºŽè¾“å…¥çš„æ—¶å€™,æœ€å¥½å…ˆè¾“å‡ºä¸€ä¸ª1,æŠŠçº¿çš„æŽ§åˆ¶æƒäº¤ç»™å¤–ç•Œ.
 
             MODE=11 CNF=01
 
@@ -26,137 +26,137 @@ void Driver_I2C1_Init(void)
 }
 
 /**
- * @description: ÆðÊ¼ÐÅºÅ
+ * @description: èµ·å§‹ä¿¡å·
  * @return {*}
  */
 void Driver_I2C1_Start(void)
 {
-    /* 1. À­¸ßsdaºÍscl */
+    /* 1. æ‹‰é«˜sdaå’Œscl */
     SDA_HIGH;
     SCL_HIGH;
-    /* 2. ÑÓÊ± */
+    /* 2. å»¶æ—¶ */
     I2C1_DELAY;
-    /* 3. À­µÍsda */
+    /* 3. æ‹‰ä½Žsda */
     SDA_LOW;
-    /* 4. ÑÓÊ± */
+    /* 4. å»¶æ—¶ */
     I2C1_DELAY;
 }
 
 /**
- * @description: Í£Ö¹ÐÅºÅ
+ * @description: åœæ­¢ä¿¡å·
  * @return {*}
  */
 void Driver_I2C1_Stop(void)
 {
-    /* 1. scl À­¸ß sdaÀ­µÍ */
+    /* 1. scl æ‹‰é«˜ sdaæ‹‰ä½Ž */
     SCL_HIGH;
     SDA_LOW;
-    /* 2. ÑÓÊ± */
+    /* 2. å»¶æ—¶ */
     I2C1_DELAY;
-    /* 3. À­¸ßsda */
+    /* 3. æ‹‰é«˜sda */
     SDA_HIGH;
-    /* 4.  ÑÓÊ± */
+    /* 4.  å»¶æ—¶ */
     I2C1_DELAY;
 }
 
 /**
- * @description: ½ÓÊÕ·½²úÉúÓ¦´ðÐÅºÅ
+ * @description: æŽ¥æ”¶æ–¹äº§ç”Ÿåº”ç­”ä¿¡å·
  */
 void Driver_I2C1_Ack(void)
 {
-    /* 1. À­¸ßsdaºÍÀ­µÍscl */
+    /* 1. æ‹‰é«˜sdaå’Œæ‹‰ä½Žscl */
     SDA_HIGH;
     SCL_LOW;
-    /* 2. ÑÓÊ± */
+    /* 2. å»¶æ—¶ */
     I2C1_DELAY;
-    /* 3. sdaÀ­µÍ */
+    /* 3. sdaæ‹‰ä½Ž */
     SDA_LOW;
-    /* 4. ÑÓÊ± */
+    /* 4. å»¶æ—¶ */
     I2C1_DELAY;
-    /* 5. sclÀ­¸ß */
+    /* 5. sclæ‹‰é«˜ */
     SCL_HIGH;
-    /* 6. ÑÓÊ± */
+    /* 6. å»¶æ—¶ */
     I2C1_DELAY;
-    /* 7. sclÀ­µÍ */
+    /* 7. sclæ‹‰ä½Ž */
     SCL_LOW;
-    /* 8. ÑÓÊ± */
+    /* 8. å»¶æ—¶ */
     I2C1_DELAY;
-    /* 9. sda À­¸ß */
+    /* 9. sda æ‹‰é«˜ */
     SDA_HIGH;
-    /* 10. ÑÓÊ± */
+    /* 10. å»¶æ—¶ */
     I2C1_DELAY;
 }
 
 /**
- * @description: ½ÓÊÕ·½²úÉú·ÇÓ¦´ðÐÅºÅ
+ * @description: æŽ¥æ”¶æ–¹äº§ç”Ÿéžåº”ç­”ä¿¡å·
  */
 void Driver_I2C1_NAck(void)
 {
-    /* 1. À­¸ßsdaºÍÀ­µÍscl */
+    /* 1. æ‹‰é«˜sdaå’Œæ‹‰ä½Žscl */
     SDA_HIGH;
     SCL_LOW;
-    /* 2. ÑÓÊ± */
+    /* 2. å»¶æ—¶ */
     I2C1_DELAY;
 
-    /* 3. sclÀ­¸ß */
+    /* 3. sclæ‹‰é«˜ */
     SCL_HIGH;
 
-    /* 4. ÑÓÊ± */
+    /* 4. å»¶æ—¶ */
     I2C1_DELAY;
 
-    /* 5. sclÀ­µÍ*/
+    /* 5. sclæ‹‰ä½Ž*/
     SCL_LOW;
 
-    /* 6. ÑÓÊ± */
+    /* 6. å»¶æ—¶ */
     I2C1_DELAY;
 }
 
 /**
- * @description: µÈ´ý½ÓÊÕ·½·¨µÄÓ¦´ð
- * @return {*} Ó¦´ð»ò·ÇÓ¦´ð
+ * @description: ç­‰å¾…æŽ¥æ”¶æ–¹æ³•çš„åº”ç­”
+ * @return {*} åº”ç­”æˆ–éžåº”ç­”
  */
 uint8_t Driver_I2C1_WaitAck(void)
 {
-    /* 1. °ÑsdaÀ­¸ß, sdaµÄÖ÷¶¯È¨½»¸ø¶Ô·½(e2promÐ¾Æ¬) */
+    /* 1. æŠŠsdaæ‹‰é«˜, sdaçš„ä¸»åŠ¨æƒäº¤ç»™å¯¹æ–¹(e2promèŠ¯ç‰‡) */
     SDA_HIGH;
 
-    /* 2. sclÀ­µÍ  */
+    /* 2. sclæ‹‰ä½Ž  */
     SCL_LOW;
-    /* 3. ÑÓÊ± */
+    /* 3. å»¶æ—¶ */
     I2C1_DELAY;
-    /* 4. À­¸ßscl */
+    /* 4. æ‹‰é«˜scl */
     SCL_HIGH;
-    /* 5. ÑÓÊ± */
+    /* 5. å»¶æ—¶ */
     I2C1_DELAY;
-    /* 6. ¶ÁÈ¡sdaµÄµçÆ½ */
+    /* 6. è¯»å–sdaçš„ç”µå¹³ */
     uint8_t ack = ACK;
     if (READ_SDA)
     {
         ack = NACK;
     }
-    /* 7. À­µÍscl */
+    /* 7. æ‹‰ä½Žscl */
     SCL_LOW;
 
-    /* 8. ÑÓÊ± */
+    /* 8. å»¶æ—¶ */
     I2C1_DELAY;
     return ack;
 }
 
 /**
- * @description: ·¢ËÍÒ»¸ö×Ö½ÚµÄÊý¾Ý
- * @param {uint8_t} byte Òª·¢ËÍµÄ×Ö½Ú
+ * @description: å‘é€ä¸€ä¸ªå­—èŠ‚çš„æ•°æ®
+ * @param {uint8_t} byte è¦å‘é€çš„å­—èŠ‚
  */
 void Driver_I2C1_SendByte(uint8_t byte)
 {
     for (uint8_t i = 0; i < 8; i++)
     {
-        /* 1. sdaºÍscl À­µÍ */
+        /* 1. sdaå’Œscl æ‹‰ä½Ž */
         SDA_LOW;
         SCL_LOW;
 
         I2C1_DELAY;
 
-        /* 2. ÏòsdaÐ´Êý¾Ý */
+        /* 2. å‘sdaå†™æ•°æ® */
         if (byte & 0x80)
         {
             SDA_HIGH;
@@ -167,48 +167,48 @@ void Driver_I2C1_SendByte(uint8_t byte)
         }
         I2C1_DELAY;
 
-        /* 3. Ê±ÖÓÀ­¸ß */
+        /* 3. æ—¶é’Ÿæ‹‰é«˜ */
         SCL_HIGH;
 
         I2C1_DELAY;
 
-        /* 4. Ê±ÖÓÀ­µÍ */
+        /* 4. æ—¶é’Ÿæ‹‰ä½Ž */
         SCL_LOW;
 
         I2C1_DELAY;
 
-        /* 5. ×óÒÆ1Î», ÎªÏÂÒ»´Î·¢ËÍ×ö×¼±¸ */
+        /* 5. å·¦ç§»1ä½, ä¸ºä¸‹ä¸€æ¬¡å‘é€åšå‡†å¤‡ */
         byte <<= 1;
     }
 }
 
 /**
- * @description: ¶ÁÒ»¸ö×Ö½ÚµÄÊý¾Ý
- * @param {uint8_t} byte Òª·¢ËÍµÄ×Ö½Ú
+ * @description: è¯»ä¸€ä¸ªå­—èŠ‚çš„æ•°æ®
+ * @param {uint8_t} byte è¦å‘é€çš„å­—èŠ‚
  */
 uint8_t Driver_I2C1_ReadByte(void)
 {
     uint8_t data = 0;
     for (uint8_t i = 0; i < 8; i++)
     {
-        /* 1. À­µÍscl */
+        /* 1. æ‹‰ä½Žscl */
         SCL_LOW;
-        /* 2. ÑÓÊ± */
+        /* 2. å»¶æ—¶ */
         I2C1_DELAY;
-        /* 3. À­¸ßscl */
+        /* 3. æ‹‰é«˜scl */
         SCL_HIGH;
-        /* 4. ÑÓÊ± */
+        /* 4. å»¶æ—¶ */
         I2C1_DELAY;
-        /* 5. ¶ÁÈ¡sda */
+        /* 5. è¯»å–sda */
         data <<= 1;
         if (READ_SDA)
         {
             data |= 0x01;
         }
-        /* 6. À­µÍscl */
+        /* 6. æ‹‰ä½Žscl */
         SCL_LOW;
 
-        /* 7. ÑÓÊ± */
+        /* 7. å»¶æ—¶ */
         I2C1_DELAY;
     }
 

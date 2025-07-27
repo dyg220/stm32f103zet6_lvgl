@@ -2,15 +2,15 @@
 
 void App_DisplayDemo_Init(void)
 {
-    /* 0. Æô¶¯¶¨Ê±Æ÷,ÓÃÓÚ¸ø lvgl Ìá¹©Ê±»ù´¡ */
+    /* 0. å¯åŠ¨å®šæ—¶å™¨,ç”¨äºç»™ lvgl æä¾›æ—¶åŸºç¡€ */
     Driver_TIM6_Init();
     Driver_TIM6_Start();
 
-    /* 1. ³õÊ¼»¯ lvgl ¿â */
+    /* 1. åˆå§‹åŒ– lvgl åº“ */
     lv_init();
-    /* 2. ³õÊ¼»¯ÏÔÊ¾Éè±¸ */
+    /* 2. åˆå§‹åŒ–æ˜¾ç¤ºè®¾å¤‡ */
     lv_port_disp_init();
-    /* 3. ³õÊ¼»¯ÊäÈëÉè±¸(´¥ÃşÉè±¸) */
+    /* 3. åˆå§‹åŒ–è¾“å…¥è®¾å¤‡(è§¦æ‘¸è®¾å¤‡) */
     lv_port_indev_init();
 }
 
@@ -22,7 +22,7 @@ void btn_cb(lv_event_t *e)
     lv_label_set_text_fmt(label, "Atguigu %d", cnt++);
 }
 
-/* ´´½¨Ò»¸ö°´Å¥ */
+/* åˆ›å»ºä¸€ä¸ªæŒ‰é’® */
 void App_Display_CreateButton(void)
 {
     lv_obj_t *btn = lv_btn_create(lv_scr_act());

@@ -1,17 +1,17 @@
 #include "Driver_USART.h"
 
 /**
- * @description: ³õÊ¼»¯´®¿Ú1
+ * @description: åˆå§‹åŒ–ä¸²å£1
  */
 void Driver_USART1_Init(void)
 {
-    /* 1. ¿ªÆôÊ±ÖÓ */
-    /* 1.1 ´®¿Ú1ÍâÉèµÄÊ±ÖÓ */
+    /* 1. å¼€å¯æ—¶é’Ÿ */
+    /* 1.1 ä¸²å£1å¤–è®¾çš„æ—¶é’Ÿ */
     RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
-    /* 1.2 GPIOÊ±ÖÓ */
+    /* 1.2 GPIOæ—¶é’Ÿ */
     RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
 
-    /* 2. ÅäÖÃGPIOÒı½ÅµÄ¹¤×÷Ä£Ê½  PA9=Tx(¸´ÓÃÍÆÍì CNF=10 MODE=11)  PA10=Rx(¸¡¿ÕÊäÈë CNF=01 MODE=00)*/
+    /* 2. é…ç½®GPIOå¼•è„šçš„å·¥ä½œæ¨¡å¼  PA9=Tx(å¤ç”¨æ¨æŒ½ CNF=10 MODE=11)  PA10=Rx(æµ®ç©ºè¾“å…¥ CNF=01 MODE=00)*/
     GPIOA->CRH |= GPIO_CRH_CNF9_1;
     GPIOA->CRH &= ~GPIO_CRH_CNF9_0;
     GPIOA->CRH |= GPIO_CRH_MODE9;
@@ -20,53 +20,53 @@ void Driver_USART1_Init(void)
     GPIOA->CRH |= GPIO_CRH_CNF10_0;
     GPIOA->CRH &= ~GPIO_CRH_MODE10;
 
-    /* 3. ´®¿ÚµÄ²ÎÊıÅäÖÃ */
-    /* 3.1 ÅäÖÃ²¨ÌØÂÊ 115200 */
+    /* 3. ä¸²å£çš„å‚æ•°é…ç½® */
+    /* 3.1 é…ç½®æ³¢ç‰¹ç‡ 115200 */
     USART1->BRR = 0x271;
-    /* 3.2 ÅäÖÃÒ»¸ö×ÖµÄ³¤¶È 8Î» */
+    /* 3.2 é…ç½®ä¸€ä¸ªå­—çš„é•¿åº¦ 8ä½ */
     USART1->CR1 &= ~USART_CR1_M;
-    /* 3.3 ÅäÖÃ²»ĞèÒªĞ£ÑéÎ» */
+    /* 3.3 é…ç½®ä¸éœ€è¦æ ¡éªŒä½ */
     USART1->CR1 &= ~USART_CR1_PCE;
-    /* 3.4 ÅäÖÃÍ£Ö¹Î»µÄ³¤¶È */
+    /* 3.4 é…ç½®åœæ­¢ä½çš„é•¿åº¦ */
     USART1->CR2 &= ~USART_CR2_STOP;
-    /* 3.5 Ê¹ÄÜ½ÓÊÕºÍ·¢ËÍ */
+    /* 3.5 ä½¿èƒ½æ¥æ”¶å’Œå‘é€ */
     USART1->CR1 |= USART_CR1_TE;
     USART1->CR1 |= USART_CR1_RE;
 
-    /* 3.6 Ê¹ÄÜ´®¿ÚµÄ¸÷ÖÖÖĞ¶Ï */
-    USART1->CR1 |= USART_CR1_RXNEIE; /* ½ÓÊÕ·Ç¿ÕÖĞ¶Ï */
-    USART1->CR1 |= USART_CR1_IDLEIE; /* ¿ÕÏĞÖĞ¶Ï */
+    /* 3.6 ä½¿èƒ½ä¸²å£çš„å„ç§ä¸­æ–­ */
+    USART1->CR1 |= USART_CR1_RXNEIE; /* æ¥æ”¶éç©ºä¸­æ–­ */
+    USART1->CR1 |= USART_CR1_IDLEIE; /* ç©ºé—²ä¸­æ–­ */
 
-    /* 4. ÅäÖÃNVIC */
-    /* 4.1 ÅäÖÃÓÅÏÈ¼¶×é */
+    /* 4. é…ç½®NVIC */
+    /* 4.1 é…ç½®ä¼˜å…ˆçº§ç»„ */
     NVIC_SetPriorityGrouping(3);
-    /* 4.2 ÉèÖÃÓÅÏÈ¼¶ */
+    /* 4.2 è®¾ç½®ä¼˜å…ˆçº§ */
     NVIC_SetPriority(USART1_IRQn, 2);
-    /* 4.3 Ê¹ÄÜ´®¿Ú1µÄÖĞ¶Ï */
+    /* 4.3 ä½¿èƒ½ä¸²å£1çš„ä¸­æ–­ */
     NVIC_EnableIRQ(USART1_IRQn);
 
-    /* 4. Ê¹ÄÜ´®¿Ú */
+    /* 4. ä½¿èƒ½ä¸²å£ */
     USART1->CR1 |= USART_CR1_UE;
 }
 
 /**
- * @description: ·¢ËÍÒ»¸ö×Ö½Ú
- * @param {uint8_t} byte Òª·¢ËÍµÄ×Ö½Ú
+ * @description: å‘é€ä¸€ä¸ªå­—èŠ‚
+ * @param {uint8_t} byte è¦å‘é€çš„å­—èŠ‚
  */
 void Driver_USART1_SendChar(uint8_t byte)
 {
-    /* 1. µÈ´ı·¢ËÍ¼Ä´æÆ÷Îª¿Õ */
+    /* 1. ç­‰å¾…å‘é€å¯„å­˜å™¨ä¸ºç©º */
     while ((USART1->SR & USART_SR_TXE) == 0)
         ;
 
-    /* 2. Êı¾İĞ´³öµ½Êı¾İ¼Ä´æÆ÷ */
+    /* 2. æ•°æ®å†™å‡ºåˆ°æ•°æ®å¯„å­˜å™¨ */
     USART1->DR = byte;
 }
 
 /**
- * @description: ·¢ËÍÒ»¸ö×Ö·û´®
- * @param {uint8_t} *str Òª·¢ËÍµÄ×Ö·û´®
- * @param {uint16_t} len ×Ö·û´®ÖĞ×Ö½ÚµÄ³¤¶È
+ * @description: å‘é€ä¸€ä¸ªå­—ç¬¦ä¸²
+ * @param {uint8_t} *str è¦å‘é€çš„å­—ç¬¦ä¸²
+ * @param {uint16_t} len å­—ç¬¦ä¸²ä¸­å­—èŠ‚çš„é•¿åº¦
  * @return {*}
  */
 void Driver_USART1_SendString(uint8_t *str, uint16_t len)

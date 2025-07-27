@@ -12,7 +12,7 @@
 
 #define __FINE_NAME__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
 
-// [ÎÄ¼şÃû:ĞĞºÅ] -- ¾ßÌåµÄÈÕÖ¾ĞÅÏ¢
+// [æ–‡ä»¶å:è¡Œå·] -- å…·ä½“çš„æ—¥å¿—ä¿¡æ¯
 #define debug_printf(format, ...) printf("[ %20s:%4d ] -- " format, __FINE_NAME__, __LINE__, ##__VA_ARGS__)
 #define debug_printfln(format, ...) printf("[ %20s:%4d ] -- " format "\r\n", __FINE_NAME__, __LINE__, ##__VA_ARGS__)
 
