@@ -76,8 +76,3 @@ void Driver_USART1_SendString(uint8_t *str, uint16_t len)
         Driver_USART1_SendChar(str[i]);
     }
 }
-
-
-
-
-
